@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <form action="">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Client</label>
+                    <input type="text" class="form-control" readonly name="name" value="{{call.clientName}}">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Company</label>
+                    <input type="text" class="form-control" readonly name="name" value="{{call.companyName}}">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Subject</label>
+                    <input type="text" class="form-control" readonly name="name" value="{{call.subject}}">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Category</label>
+                    <input type="text" class="form-control" readonly name="name" value="{{call.category}}">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Priority</label>
+                    <input type="text" class="form-control" readonly name="name" value="{{call.priority}}">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Description</label>
+                    <input type="text" class="form-control" readonly name="name" value="{{call.description}}">
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label">Solution</label>
+                    <textarea type="text" class="form-control" class="form-control" name="ticket_solution"></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock content %}

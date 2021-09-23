@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>My Calls</h1>
+<p>
+    {{calls}},{{mytext}}
+</p>
+<ul>
+    {% for mycalls in calls %}
+    {% if mycalls.id > 0 %}
+    <li>ID: {{mycalls.id}}</li>
+    <li>Category: {{mycalls.category}}</li>
+    <li>Company: {{mycalls.companyName}}</li>
+    <li>Client: {{mycalls.clientName}}</li>
+    <li>--------------</li>
+    {% else %}
+
+    {% endif %}
+    
+    {% endfor %}
+</ul>
+
+
+{% endblock content %}
