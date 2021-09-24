@@ -10,4 +10,6 @@ class Call(models.Model):
     clientCall = models.TextField(max_length=30,null=False,blank=False)
     companyCall = models.TextField(null=False,blank=False,max_length=30)
     emailResponseCall = models.EmailField(null=False,blank=False)
-    status = models.IntegerField(default=0,null=False,blank=False)
+    statusCall = models.IntegerField(default=0,null=False,blank=False)
+    solutionCall = models.TextField(default='',null=False,blank=False)
+    nerdCall = models.IntegerField(default=0)

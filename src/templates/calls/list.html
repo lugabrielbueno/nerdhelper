@@ -1,5 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    .floating {
+        float: left;
+        margin: 1%;
+    }
+    .card-text {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+</style>
+<!-- {% for call in calls %} -->
+<div class="floating">
+    <div class="card bg-light border-primary mb-3" style="max-width: 30rem;">
+        <div class="card-header border-primary">Subject: </div>
+        <div class="card-header border-primary">Company: </div>
+        <div class="card-body">
+            <h6 class="card-title">Client: </h6>
+            <p class="card-text"></p>
+        </div>
+        <div class="card-footer border-primary">
+            <a href="" class="btn btn-success"><i class="fa fa-reply"></i> Answer</a>
+            <!-- <a href="{% url calls_detail_view call.id  %} " class="btn btn-primary"><i class="fa fa-folder-open"></i> Open</a> -->
+        </div>
+    </div>
+</div>
+<!-- {% endfor %} -->
 
 {% endblock content %}

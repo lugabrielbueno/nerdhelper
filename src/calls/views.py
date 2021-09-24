@@ -1,62 +1,40 @@
 from django.shortcuts import render
 from .models import Call
-# Create your views here.
-def calls_detail_view(request):
 
-    # calls = Call.objects.get(id=request)
-    # context = {
-    # "descriptionCall": calls.descriptionCall,
-    # "categoryCall": calls.categoryCall,
-    # "subjectCall": calls.subjectCall,
-    # "clientCall": calls.clientCall,
-    # "companyCall": calls.companyCall,
-    # "emailResponseCall": calls.emailResponseCall,
-    # "status": calls.statusCall
-    # }
-    return render(request,"calls/detail.html",{})
+# Create your views here.
+
+
+def calls_detail_view(request):
+    context = {
+        "call": Call.objects.filter(id=request.id)
+    }
+
+    return render(request, "calls/detail.html", context)
+
 
 def calls_list_view(request, *args, **kwargs):
-    calls = {
-        "calls":  [
-                  {"id": 1, "category": 4, "clientName": "NameClient", "companyName": "nameCompany"},
-                  {"id": 2, "category": 4, "clientName": "NameClient", "companyName": "nameCompany"},
-                  {"id": 14, "category": 3, "clientName": "NameClient", "companyName": "nameCompany"},
-                  {"id": 10, "category": 2, "clientName": "NameClient", "companyName": "nameCompany"},
-                  {"id": 6, "category": 1, "clientName": "NameClient", "companyName": "nameCompany"},
-                  ]
+
+    context = {
+        "calls": Call.objects.filter(statusCall=1)
     }
-    return render(request, "calls/list.html", calls)
+
+    return render(request, "calls/list.html", context)
+
 
 def mycalls_list_view(request, *args, **kwargs):
-    mycalls = {
-        "mycalls":  [
-                  {"id": 1, "category": 4, "clientName": "NameClient", "companyName": "nameCompany"},
-                  {"id": 2, "category": 4, "clientName": "NameClient", "companyName": "nameCompany"},
-                  {"id": 14, "category": 3, "clientName": "NameClient", "companyName": "nameCompany"},
-                  {"id": 10, "category": 2, "clientName": "NameClient", "companyName": "nameCompany"},
-                  {"id": 6, "category": 1, "clientName": "NameClient", "companyName": "nameCompany"},
-                  ]
-    }
-    return render(request, "mycalls/list.html", mycalls)
+
+    return render(request, "mycalls/list.html", {})
+
 
 def mycalls_detail_view(request, *args, **kwargs):
-    mycalls = {
-        "mycalls":  [
-                  {"id": 1, "category": 4, "clientName": "NameClient", "companyName": "nameCompany"},
-                  {"id": 2, "category": 4, "clientName": "NameClient", "companyName": "nameCompany"},
-                  {"id": 14, "category": 3, "clientName": "NameClient", "companyName": "nameCompany"},
-                  {"id": 10, "category": 2, "clientName": "NameClient", "companyName": "nameCompany"},
-                  {"id": 6, "category": 1, "clientName": "NameClient", "companyName": "nameCompany"},
-                  ]
-    }
-    return render(request, "mycalls/detail.html", mycalls)
+
+    return render(request, "mycalls/detail.html", {})
 
 
-def standbycalls_view(request, *args, **kwargs):
 
-    return render(request, "standbycalls.html", {})
 
 
 def closedcalls_view(request, *args, **kwargs):
 
     return render(request, "closedcalls.html", {})
+
