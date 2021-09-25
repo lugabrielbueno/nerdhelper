@@ -15,14 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from pages.views import home_view
-from calls.views import  mycalls_list_view, mycalls_detail_view, calls_detail_view, calls_list_view
+from pages.views import home_view,settings_view
+from calls.views import  formCalls
+from categories.views import categories_list_view,categories_create_view,categories_update_view,categories_delete_view
 
 urlpatterns = [
     path('', home_view, name='home'),
-    path('mycalls/detail', mycalls_detail_view, name='mycallsdetail'),
-    path('mycalls/list', mycalls_list_view, name='mycalls'),
-    path('calls/detail/<int:id>', calls_detail_view, name='callsdetail'),
-    path('calls/list', calls_list_view, name='calls'),
+    # path('mycalls/detail', mycalls_detail_view, name='mycallsdetail'),
+    # path('mycalls/list', mycalls_list_view, name='mycalls'),
+    # path('calls/detail/<int:id>', calls_detail_view, name='callsdetail'),
+    path('calls/create', formCalls, name='calls'),
+    path('settings/list', settings_view, name='settings'),
+    path('categories/list', categories_list_view, name='categories'),
+    path('categories/create', categories_create_view, name='categoriescreate'),
+    path('categories/<int:id>/update', categories_update_view, name='categoriesupdate'),
+    path('categories/<int:id>/delete', categories_delete_view, name='categoriesdelete'),
+    # path('categories/detail', categories_detail_view, name='categoriesdetail'),
     path('admin/', admin.site.urls)
 ]

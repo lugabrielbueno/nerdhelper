@@ -7,6 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nerd Helper</title>
 </head>
+<style>
+
+    .container {
+        padding: 2% 14%;
+        border-bottom: 1px solid rgb(22, 0, 121);
+        border-left: 1px solid rgb(22, 0, 121);
+        border-right: 1px solid rgb(22, 0, 121);
+        border-radius: 10px;
+    }
+    .page-title{
+        margin: 3% 16%;
+        color: rgb(68, 68, 68);
+    }
+    .required{
+        color: rgb(209, 0, 0);
+    }
+
+
+</style>
+
 
 <body>
     {% load static %}
@@ -14,10 +34,11 @@
     <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
     {% include 'menu.html' %}
 
-    {% block content %}
+    <div class="container bg-light">
+        {% block content %}
 
-    {% endblock content %}
-
+        {% endblock content %}
+    </div>
 </body>
 
 </html>

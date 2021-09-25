@@ -2,97 +2,77 @@
 
 {% block content %}
 
-<style>
-
-    .container {
-        padding: 2% 14%;
-        border-bottom: 1px solid rgb(22, 0, 121);
-        border-left: 1px solid rgb(22, 0, 121);
-        border-right: 1px solid rgb(22, 0, 121);
-        border-radius: 10px;
-    }
-    .page-title{
-        margin: 3% 16%;
-        color: rgb(68, 68, 68);
-    }
-    .required{
-        color: rgb(209, 0, 0);
-    }
-
-
-</style>
 
 
 
-<div class="container bg-light">
-    <h1 class="page-title">Register Calls</h1>
-    <div class="row ">
-        <div class="col-md-12">
-            <form action="" method="POST" class="row g-4 "> {% csrf_token %}
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label class="control-label">Client <span class="required">*</span></label>
-                        <input type="text" required class="form-control" name="client" value="{{call.clientName}}">
-                    </div>
+<h1 class="page-title">Register Calls</h1>
+<div class="row ">
+    <div class="col-md-12">
+        <form action="" method="POST" class="row g-4 "> {% csrf_token %}
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label">Client <span class="required">*</span></label>
+                    <input type="text" required class="form-control" name="client" value="">
                 </div>
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label class="control-label">Company <span class="required">*</span></label>
-                        <input type="text" required class="form-control" name="company" value="{{call.companyName}}">
-                    </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label">Company <span class="required">*</span></label>
+                    <input type="text" required class="form-control" name="company" value="">
                 </div>
-                <div class="col-md-10">
-                    <div class="form-group">
-                        <label class="control-label">Subject <span class="required">*</span></label>
-                        <input type="text" required class="form-control" name="subject" value="{{call.subject}}">
-                    </div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label">Subject <span class="required">*</span></label>
+                    <input type="text" required class="form-control" name="subject" value="">
                 </div>
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label class="control-label">Category <span class="required">*</span></label>
-                        <select name="category" required id="category" class="form-control">
-                            {% for cat in categories %}
-                            <option value="{{cat.id}}">{{cat.categoryName}}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label">Category <span class="required">*</span></label>
+                    <select name="category" required id="category" class="form-control">
+                        {% for cat in categories %}
+                        <option value="{{cat.id}}">{{cat.categoryName}}</option>
+                        {% endfor %}
+                    </select>
                 </div>
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label class="control-label">Priority</label>
-                        <select name="category" id="category" class="form-control">
-                            {% for priority in priorities %}
-                            <option value="{{priority.id}}">{{priority.priorityName}}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label">Priority</label>
+                    <select name="priority" id="priority" class="form-control">
+                        {% for priority in priorities %}
+                        <option value="{{priority.id}}">{{priority.priorityName}}</option>
+                        {% endfor %}
+                    </select>
                 </div>
-                <div class="col-md-10">
-                    <div class="form-group">
-                        <label class="control-label">Email</label>
-                        <input type="email" class="form-control" name="email">
-                    </div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label">Email</label>
+                    <input type="email" class="form-control" name="email">
                 </div>
-                <div class="col-md-10">
-                    <div class="form-group">
-                        <label class="control-label">Description <span class="required">*</span></label>
-                        <textarea type="text" required class="form-control" name="description"></textarea>
-                    </div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label">Description <span class="required">*</span></label>
+                    <textarea type="text" required class="form-control" name="description"></textarea>
                 </div>
-                <div class="col-md-10">
-                    <div class="form-group">
-                        <label class="control-label">Solution</label>
-                        <textarea type="text" class="form-control" name="solution"></textarea>
-                    </div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label">Solution</label>
+                    <textarea type="text" class="form-control" name="solution"></textarea>
                 </div>
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <button class="btn btn-success"><i class="fa fa-save"></i> Save</button>
-                    </div>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <button class="btn btn-success"><i class="fa fa-save"></i> Save</button>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
+
 </div>
 
 
