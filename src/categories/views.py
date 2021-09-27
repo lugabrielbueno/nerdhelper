@@ -45,22 +45,22 @@ def categories_update_view(request,*args,**kwargs):
     return render(request,'categories/list.html',categories)
 
 
-def categories_delete_view(request,*args,**kwargs):
-    print(request.GET.get('id'))
+def categories_delete_view(request,id,*args,**kwargs):
+
     if request.method == 'POST':
 
-        Categ =  Category.objects.filter(id=request.POST['categoryId'])
+        Categ =  Category.objects.get(id=request.POST['categoryId'])
         Categ.delete()
 
         messages.success(request, 'Successfully deleted')
 
         categories = {"categories": Category.objects.all() }
+        
         return render(request,'categories/list.html',categories)
 
     else:
-
     
-        cat =  {"cat": Category.objects.get(id=request.GET.get('id')) }
+        cat =  {"cat": Category.objects.get(id=id) }
 
 
         return render(request,'categories/category_delete.html',cat)

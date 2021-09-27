@@ -16,20 +16,30 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from pages.views import home_view,settings_view
-from calls.views import  formCalls
+from priorities.views import priorities_list_view,priorities_create_view,priorities_update_view,priorities_delete_view
 from categories.views import categories_list_view,categories_create_view,categories_update_view,categories_delete_view
+from status.views import status_list_view,status_create_view,status_update_view,status_delete_view
+from calls.views import calls_list_view,calls_detail_view
+from nerds.views import nerd_detail_view,nerd_list_view
 
 urlpatterns = [
     path('', home_view, name='home'),
-    # path('mycalls/detail', mycalls_detail_view, name='mycallsdetail'),
-    # path('mycalls/list', mycalls_list_view, name='mycalls'),
-    # path('calls/detail/<int:id>', calls_detail_view, name='callsdetail'),
-    path('calls/create', formCalls, name='calls'),
     path('settings/list', settings_view, name='settings'),
     path('categories/list', categories_list_view, name='categories'),
     path('categories/create', categories_create_view, name='categoriescreate'),
     path('categories/<int:id>/update', categories_update_view, name='categoriesupdate'),
     path('categories/<int:id>/delete', categories_delete_view, name='categoriesdelete'),
-    # path('categories/detail', categories_detail_view, name='categoriesdetail'),
+    path('priorities/list', priorities_list_view, name='priorities'),
+    path('priorities/create', priorities_create_view, name='prioritiescreate'),
+    path('priorities/<int:id>/update', priorities_update_view, name='prioritiesupdate'),
+    path('priorities/<int:id>/delete', priorities_delete_view, name='prioritiesdelete'),
+    path('status/list', status_list_view, name='status'),
+    path('status/create', status_create_view, name='statuscreate'),
+    path('status/<int:id>/update', status_update_view, name='statusupdate'),
+    path('status/<int:id>/delete', status_delete_view, name='statusdelete'),
+    path('calls/list/', calls_list_view, name='calls'),
+    path('calls/<int:id>/detail', calls_detail_view, name='callsdetail'),
+    path('nerds/<int:id>/detail', nerd_detail_view, name='nerdsdetail'),
+    path('nerds/list', nerd_list_view, name='nerds'),
     path('admin/', admin.site.urls)
 ]

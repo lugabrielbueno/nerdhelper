@@ -1,33 +1,52 @@
 from django.shortcuts import render
 from .models import Call
-from calls.forms import CallForm
+from categories.models import Category
+from status.models import Status
+from priorities.models import Priority
+from nerds.models import Nerd
+
 
 # Create your views here.
 
-def formCalls(request,*args,**kwargs):
-    data = {"formCall": CallForm()}
-    return render(request,'calls/create.html', data)
+# def formCalls(request,*args,**kwargs):
+#     data = {"formCall": CallForm()}
+#     return render(request,'calls/create.html', data)
 
 
 # def calls_create_view(request,*args,**kwargs):
 
 #     return render(request,"calls/create.html",{})
 
-# def calls_detail_view(request):
-#     context = {
-#         "call": Call.objects.filter(id=request.id)
-#     }
+def calls_detail_view(request, id):
 
-#     return render(request, "calls/detail.html", context)
+    call = Call.objects.get(id=id)
+
+    # nerdName = Nerd.objects.filter(id=call.nerdCall)
+
+    context = {
+        "call": call,
+        "status": Status.objects.all(),
+        "priorities": Priority.objects.all(),
+        "categories": Category.objects.all(),
+        # "nerdName": nerdName
+    }
+
+    return render(request, "calls/detail.html", context)
 
 
-# def calls_list_view(request, *args, **kwargs):
+def calls_list_view(request, *args, **kwargs):
+    calls = Call.objects.all()
 
-#     context = {
-#         "calls": Call.objects.filter(statusCall=1)
-#     }
+    # nerdName = Nerd.objects.filter(id=calls.nerdCall)
+    context = {
+        "calls": calls,
+        "status": Status.objects.all(),
+        "priorities": Priority.objects.all(),
+        "categories": Category.objects.all(),
+        # "nerdName": nerdName
+    }
 
-#     return render(request, "calls/list.html", context)
+    return render(request, "calls/list.html", context)
 
 
 # def mycalls_list_view(request, *args, **kwargs):
