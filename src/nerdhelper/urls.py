@@ -20,7 +20,7 @@ from priorities.views import priorities_list_view,priorities_create_view,priorit
 from categories.views import categories_list_view,categories_create_view,categories_update_view,categories_delete_view
 from status.views import status_list_view,status_create_view,status_update_view,status_delete_view
 from calls.views import calls_list_view,calls_detail_view
-from nerds.views import nerd_detail_view,nerd_list_view
+from nerds.views import nerd_detail_view,nerd_list_view,nerd_create_view,nerd_delete_view
 
 urlpatterns = [
     path('', home_view, name='home'),
@@ -41,5 +41,7 @@ urlpatterns = [
     path('calls/<int:id>/detail', calls_detail_view, name='callsdetail'),
     path('nerds/<int:id>/detail', nerd_detail_view, name='nerdsdetail'),
     path('nerds/list', nerd_list_view, name='nerds'),
+    path('nerds/create', nerd_create_view, name='nerdscreate'),
+    path('nerds/<int:id>/delete', nerd_delete_view, name='nerdsdelete'),
     path('admin/', admin.site.urls)
 ]

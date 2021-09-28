@@ -1,36 +1,32 @@
 {% extends 'base.html' %}
 
 <style>
-    .form-group{
-        float: left;
-        
-    }
+
     .card-text {
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     }
 </style>
 {% block content %}
 <div class="row">
-    <div class="col-md-12">
-        {% for call in calls %}
-        <div class="col-md-6">
-            <div class="form-group">
-                <div class="card bg-light border-primary mb-3" style="max-width: 400px;">
-                    <div class="card-header border-primary">Subject: <strong> {{call.subjectCall}}</strong></div>
-                    <div class="card-header border-primary">Company: <strong> {{call.companyCall}}</strong></div>
-                    <div class="card-body">
-                        <h6 class="card-title">Client: {{call.clientCall}}</h6>
-                        <p class="card-text">{{call.descriptionCall|slice:"0:200"}}...</p>
-                    </div>
-                    <div class="card-footer border-primary">
-                        <a href="{% url 'callsdetail' call.id  %} " class="btn btn-primary"><i
-                                class="fa fa-folder-open"></i>
-                            Open</a>
-                    </div>
+    {% for call in calls %}
+    <div class="col-md-4">
+        <div class="form-group">
+            <div class="card bg-light border-primary mb-3" style="max-width: 450px;">
+                <div class="card-header border-primary">Subject: <strong> {{call.subjectCall}}</strong></div>
+                <div class="card-header border-primary">Company: <strong> {{call.companyCall}}</strong></div>
+                <div class="card-body">
+                    <h6 class="card-title">Client: {{call.clientCall}}</h6>
+                    <p class="card-text">{{call.descriptionCall|slice:"0:200"}}...</p>
+                </div>
+                <div class="card-footer border-primary">
+                    <a href="{% url 'callsdetail' call.id  %} " class="btn btn-primary"><i
+                            class="fa fa-folder-open"></i>
+                        Open</a>
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
 </div>
+
 {% endblock content %}

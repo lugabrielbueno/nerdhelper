@@ -14,3 +14,4 @@ class Call(models.Model):
     statusCall = models.IntegerField(default=0,null=False,blank=False)
     solutionCall = models.TextField(default='',null=False,blank=False)
     nerdCall = models.IntegerField(default=0)
+    dateTimeCall = models.DateTimeField(auto_now_add=True, blank=True)

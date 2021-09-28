@@ -4,53 +4,52 @@
 
 
 
+
+
 <div class="row">
-    <div class="col-md-12">
-
-        <div class="col-md-4">
-            <div class="form-group">
-                <label class="control-label">Nerd</label>
-                <input type="text" value="{{nerd.nerdName}}" readonly class="form-control">
-            </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="control-label">Nerd</label>
+            <input type="text" value="{{nerd.nerdName}}" readonly class="form-control">
         </div>
-
-        <div class="col-md-4">
-            <div class="form-group">
-                <label class="control-label">Fowards</label>
-                <input type="text" value="{{nerd.nerdFowards}}" readonly class="form-control">
-            </div>
-        </div>
-
-
-        {% if solveds %}
-
-        <div class="col-md-6">
-            <div class="table-scrollable">
-                <h5>Solved calls by category</h5>
-                <table class="table table-hover">
-                  
-                    <thead>
-                        <tr>
-                            <th>Quantity</th>
-                            <th>Category</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for solved in solveds %}
-                        <tr>
-                            <td>{{solved.qtt}}</td>
-                            <td>{{solved.category}}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-
-                </table>
-
-            </div>
-        </div>
-        {% endif %}
-
     </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="control-label">Fowards</label>
+            <input type="text" value="{{nerd.nerdFowards}}" readonly class="form-control">
+        </div>
+    </div>
+</div>
+<br><br>
+<div class="row">
+    {% if solveds %}
+
+    <div class="col-md-6">
+        <div class="table-scrollable">
+            <h5>Solved calls by category</h5>
+            <table class="table table-hover">
+
+                <thead>
+                    <tr>
+                        <th>Quantity</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for solved in solveds %}
+                    <tr>
+                        <td>{{solved.qtt}}</td>
+                        <td>{{solved.category}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+    {% endif %}
 </div>
 
 {% endblock content %}

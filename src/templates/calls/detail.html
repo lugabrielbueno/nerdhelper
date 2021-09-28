@@ -13,112 +13,136 @@
 </script>
 
 <h3 class="page-title">Call Number <strong>{{call.id}}</strong></h3>
-<div class="row">
-    <div class="col-md-12">
-        <form action="" method="POST">
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">Client</label>
-                    <input type="text" class="form-control" readonly name="name" value="{{call.clientCall}}">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label class="control-label">Company</label>
-                    <input type="text" class="form-control" readonly name="name" value="{{call.companyCall}}">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label class="control-label">Subject</label>
-                    <input type="text" class="form-control" readonly name="name" value="{{call.subjectCall}}">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label class="control-label">Category</label>
-                    <select name="categoryCall" id="categoryCall" class="form-control">
-                        <option value=""></option>
-                        {% for cat in categories %}
-                        <option value="{{cat.id}}" {% if cat.id == call.categoryCall %} selected {%endif%}>
-                            {{cat.categoryName}}
-                        </option>
-                        {% endfor %}
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label class="control-label">Priority</label>
-                    <select name="priorityCall" id="priorityCall" class="form-control">
-                        <option value=""></option>
-                        {% for prior in priorities %}
-                        <option value="{{prior.id}}" {% if prior.id == call.priorityCall %} selected {%endif%}>
-                            {{prior.priorityName}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label class="control-label">Status</label>
-                    <select name="statusCall" id="statusCall" class="form-control">
-                        <option value=""></option>
-                        {% for stat in status %}
-                        <option value="{{stat.id}}" {% if stat.id == call.statusCall %} selected {%endif%}>
-                            {{stat.statusName}}
-                        </option>
-                        {% endfor %}
 
-                    </select>
-                </div>
+<form action="" class="row g-3" method="POST">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <p style="border: 1px solid rgb(6, 0, 87); border-radius: 2px; padding: 3px;" class="text-start">Opened in: {{call.dateTimeCall}}</p>
+
             </div>
 
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label class="control-label">Description</label>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Client</label>
+                <input type="text" class="form-control" readonly name="name" value="{{call.clientCall}}">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Company</label>
+                <input type="text" class="form-control" readonly name="name" value="{{call.companyCall}}">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Subject</label>
+                <input type="text" class="form-control" readonly name="name" value="{{call.subjectCall}}">
+            </div>
+        </div>
 
-                    <textarea type="text" class="form-control" class="form-control"
-                        name="descriptionCall">{{call.descriptionCall}}</textarea>
-                </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Category</label>
+                <select name="categoryCall" id="categoryCall" class="form-control">
+                    <option value=""></option>
+                    {% for cat in categories %}
+                    <option value="{{cat.id}}" {% if cat.id == call.categoryCall %} selected {%endif%}>
+                        {{cat.categoryName}}
+                    </option>
+                    {% endfor %}
+                </select>
             </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Priority</label>
+                <select readonly name="priorityCall" id="priorityCall" class="form-control">
+                    <option value=""></option>
+                    {% for prior in priorities %}
+                    <option value="{{prior.id}}" {% if prior.id == call.priorityCall %} selected {%endif%}>
+                        {{prior.priorityName}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Nerd</label>
+                <select name="nerd" id="nerd" class="form-control">
+                    <option value=""></option>
+                    {% for nerd in nerds %}
+                    <option value="{{nerd.id}}" {% if nerd.id == call.nerdCall %} selected {%endif%} >{{nerd.nerdName}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Status</label>
+                <select name="statusCall" id="statusCall" class="form-control">
+                    <option value=""></option>
+                    {% for stat in status %}
+                    <option value="{{stat.id}}" {% if stat.id == call.statusCall %} selected {%endif%}>
+                        {{stat.statusName}}
+                    </option>
+                    {% endfor %}
+
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label">Description:</label>
+                <p style="border: 1px solid rgb(6, 0, 87); border-radius: 2px; padding: 3px;" class="text-start">
+                    {{call.descriptionCall}}</p>
+            </div>
+        </div>
 
 
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label class="control-label">Solution</label>
-                    <textarea type="text" class="form-control" class="form-control" name="solutionCall"></textarea>
-                </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label">Solution</label>
+                <textarea type="text" class="form-control" class="form-control" name="solutionCall"></textarea>
             </div>
-            <br><br>
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label class="control-label">Actions</label>
-                    <select name="options" id="options" class="form-control">
-                        <option value="1">Answer</option>
-                        <option value="2">Foward to another Nerd</option>
-                        <option value="3">Close</option>
-                    </select>
-                </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="form-group">
+                <br><br><label class="control-label">Actions</label>
+                <select name="options" id="options" class="form-control">
+                    <option value="1">Answer (Update)</option>
+                    <option value="2">Foward to another Nerd</option>
+                    <option value="3">Close</option>
+                </select>
             </div>
-            <div class="col-md-5" id="divNerds" style="display: none;">
-                <div class="form-group">
-                    <label class="control-label">Nerds</label>
-                    <select name="nerds" id="nerds" class="form-control">
-                        {% for nerd in nerds %}
-                        <option value="{{nerd.id}}">{{nerd.nerdName}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+        </div>
+        <div class="col-md-5" id="divNerds" style="display: none;">
+            <div class="form-group">
+                <label class="control-label">Nerds</label>
+                <select name="nerds" id="nerds" class="form-control">
+                    {% for nerd in nerds %}
+                    <option value="{{nerd.id}}">{{nerd.nerdName}}</option>
+                    {% endfor %}
+                </select>
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-5">
                 <div class="form-group">
                     <button type="submit" name="execute" class="btn btn-success"><i class="fa fa-check"></i>
                         Execute</button>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+ 
+</form>
+
+
 
 {% endblock content %}

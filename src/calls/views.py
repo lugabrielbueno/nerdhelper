@@ -28,7 +28,7 @@ def calls_detail_view(request, id):
         "status": Status.objects.all(),
         "priorities": Priority.objects.all(),
         "categories": Category.objects.all(),
-        # "nerdName": nerdName
+        "nerds": Nerd.objects.all()
     }
 
     return render(request, "calls/detail.html", context)

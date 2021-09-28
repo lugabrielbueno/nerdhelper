@@ -3,6 +3,56 @@
 {% block content %}
 
 
+<div class="row">
+
+    <div class="messages">
+        {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div class="alert alert-success" role="alert"> {{ message }} </div>
+        {% else %}
+        <div class="alert alert-danger" role="alert"> {{ message }} </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    <form action="{% url 'nerdscreate' %}"  class="row g-4"  method="POST">{% csrf_token%}
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">Nerd Name <span class="required">*</span></label>
+                <input type="text" name="nerdName" required class="form-control">
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">Nerd Login <span class="required">*</span></label>
+                <input type="text" name="nerdLogin" required class="form-control">
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">Password <span class="required">*</span></label>
+                <input type="password" name="pass" required class="form-control">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">Confirm Password <span class="required">*</span></label>
+                <input type="password" name="confirmPass" required class="form-control">
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <button class="btn btn-success"><i class="fa fa-save"></i> Save Nerd</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% if nerds %}
+<hr>
 
 <div class="row">
     <div class="col-md-12">
@@ -13,7 +63,8 @@
                     <tr>
                         <th>ID</th>
                         <th>Nerd</th>
-                        <th></th>
+                        <th>Profile</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,7 +72,10 @@
                     <tr>
                         <td>{{nerd.id}}</td>
                         <td>{{nerd.nerdName}}</td>
-                        <td><a class="btn btn-primary" href="{% url 'nerdsdetail' nerd.id %}"> <i class="fa fa-eye"></i> Profile</a> </td>
+                        <td><a class="btn btn-primary" href="{% url 'nerdsdetail' nerd.id %}"> <i class="fa fa-eye"></i>
+                                Profile</a> </td>
+                        <td><a href="{% url 'nerdsdelete' id=nerd.id %}" class="btn "><i class="fa fa-times"></i></a>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -31,5 +85,6 @@
         </div>
     </div>
 </div>
+{% endif %}
 
 {% endblock content %}
