@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from pages.views import home_view,settings_view
+from pages.views import home_view,settings_view,login_view,create_user_view,logout_user_view
 from priorities.views import priorities_list_view,priorities_create_view,priorities_update_view,priorities_delete_view
 from categories.views import categories_list_view,categories_create_view,categories_update_view,categories_delete_view
 from status.views import status_list_view,status_create_view,status_update_view,status_delete_view
@@ -43,5 +43,8 @@ urlpatterns = [
     path('nerds/list', nerd_list_view, name='nerds'),
     path('nerds/create', nerd_create_view, name='nerdscreate'),
     path('nerds/<int:id>/delete', nerd_delete_view, name='nerdsdelete'),
+    path('login', login_view, name='login'),
+    path('createuser', create_user_view, name='createuser'),
+    path('logout', logout_user_view, name='logout'),
     path('admin/', admin.site.urls)
 ]

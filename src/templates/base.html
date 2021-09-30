@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="The Nerd Helper" />
     <title>Nerd Helper</title>
 </head>
 <style>
@@ -17,7 +18,7 @@
     }
 
     .page-title {
-        margin: 1% 16%;
+        margin: 1% 30%;
         color: rgb(68, 68, 68);
     }
 
@@ -34,6 +35,12 @@
     {% include 'menu.html' %}
 
     <div class="container bg-light">
+
+    
+        {% if user.is_authenticated %}
+        Hi {{ user.username }}!
+        {% endif %}
+
         {% block content %}
 
         {% endblock content %}
