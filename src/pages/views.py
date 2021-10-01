@@ -6,19 +6,17 @@ from nerds.models import Nerd
 from django import forms
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-
+@login_required(login_url="login")
 def home_view(request, *args, **kwargs):
 
     try:
+        print(User.objects.all())
+        
 
-        if request.user.is_authenticated:
-
-            return render(request,'login.html')
         context = {
             "categories": Category.objects.all(),
             "priorities": Priority.objects.all(),
@@ -26,6 +24,7 @@ def home_view(request, *args, **kwargs):
         }
 
         if request.method == 'POST':
+            nerd = Nerd.objects.get(id=request.POST['nerd'])    
 
             Calls = Call()
             Calls.clientCall = request.POST['client']
@@ -37,7 +36,7 @@ def home_view(request, *args, **kwargs):
             Calls.priorityCall = request.POST['priority']
             Calls.subjectCall = request.POST['subject']
             Calls.statusCall = 1  # open status
-            Calls.nerdCall = request.POST['nerd']
+            Calls.nerdCall = nerd.nerdName
 
             if not Calls.clientCall:
                 raise forms.ValidationError("This field is required")

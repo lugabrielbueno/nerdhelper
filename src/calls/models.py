@@ -13,5 +13,5 @@ class Call(models.Model):
     emailResponseCall = models.EmailField(null=False,blank=False)
     statusCall = models.IntegerField(default=0,null=False,blank=False)
     solutionCall = models.TextField(default='',null=False,blank=False)
-    nerdCall = models.IntegerField(default=0)
+    nerdCall = models.CharField(default=0,max_length=30,null=False,blank=False) #nerdLogin
     dateTimeCall = models.DateTimeField(auto_now_add=True, blank=True)

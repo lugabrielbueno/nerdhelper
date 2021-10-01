@@ -4,7 +4,7 @@
 
 <script>
     function showNerds(value) {
-        if (value == 'y') {
+        if (value == 2) {
             document.getElementById('divNerds').style.display = "block";
         } else {
             document.getElementById('divNerds').style.display = "none";
@@ -14,12 +14,12 @@
 
 <h3 class="page-title">Call Number <strong>{{call.id}}</strong></h3>
 
-<form action="" class="row g-3" method="POST">
+<form action="{% url 'callsdetail' call.id %}" class="row g-3" method="POST"> {% csrf_token %}
 
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <p style="border: 1px solid rgb(6, 0, 87); border-radius: 2px; padding: 3px;" class="text-start">Opened in: {{call.dateTimeCall}}</p>
+                <p style="border: 1px solid rgb(6, 0, 87); border-radius: 2px; padding: 3px;" class="mb-6">Opened in: {{call.dateTimeCall}}</p>
 
             </div>
 
@@ -60,7 +60,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label class="control-label">Priority</label>
-                <select readonly name="priorityCall" id="priorityCall" class="form-control">
+                <select  name="priorityCall" id="priorityCall" class="form-control">
                     <option value=""></option>
                     {% for prior in priorities %}
                     <option value="{{prior.id}}" {% if prior.id == call.priorityCall %} selected {%endif%}>
@@ -72,12 +72,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label class="control-label">Nerd</label>
-                <select name="nerd" id="nerd" class="form-control">
-                    <option value=""></option>
-                    {% for nerd in nerds %}
-                    <option value="{{nerd.id}}" {% if nerd.id == call.nerdCall %} selected {%endif%} >{{nerd.nerdName}}</option>
-                    {% endfor %}
-                </select>
+                <input type="text" readonly class="form-control" name="nerdNameCall" id="nerdNameCall" value="{{nerdSelected}}">
             </div>
         </div>
         <div class="col-md-4">
@@ -98,7 +93,7 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label class="control-label">Description:</label>
-                <p style="border: 1px solid rgb(6, 0, 87); border-radius: 2px; padding: 3px;" class="text-start">
+                <p style="border: 1px solid rgb(6, 0, 87); border-radius: 2px; padding: 3px;" class="mb-6">
                     {{call.descriptionCall}}</p>
             </div>
         </div>
@@ -107,14 +102,14 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label class="control-label">Solution</label>
-                <textarea type="text" class="form-control" class="form-control" name="solutionCall"></textarea>
+                <textarea type="text" class="form-control" class="form-control" name="solutionCall">{{call.solutionCall}}</textarea>
             </div>
         </div>
 
         <div class="col-md-5">
             <div class="form-group">
                 <br><br><label class="control-label">Actions</label>
-                <select name="options" id="options" class="form-control">
+                <select onchange="showNerds(this.value)" name="options" id="options" class="form-control">
                     <option value="1">Answer (Update)</option>
                     <option value="2">Foward to another Nerd</option>
                     <option value="3">Close</option>
@@ -123,10 +118,10 @@
         </div>
         <div class="col-md-5" id="divNerds" style="display: none;">
             <div class="form-group">
-                <label class="control-label">Nerds</label>
-                <select name="nerds" id="nerds" class="form-control">
+                <br><br><label class="control-label">Choose a nerd</label>
+                <select name="nerdCall" id="nerdCall" class="form-control">
                     {% for nerd in nerds %}
-                    <option value="{{nerd.id}}">{{nerd.nerdName}}</option>
+                    <option value="{{nerd.nerdLogin}}">{{nerd.nerdName}}</option>
                     {% endfor %}
                 </select>
             </div>

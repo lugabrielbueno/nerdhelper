@@ -30,6 +30,7 @@
 
 <body>
     {% load static %}
+
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
     {% include 'menu.html' %}
@@ -38,7 +39,10 @@
 
     
         {% if user.is_authenticated %}
-        Hi {{ user.username }}!
+        Welcome, <strong>{{ user.username.capitalize }}</strong> !
+
+        {% else %}
+
         {% endif %}
 
         {% block content %}
