@@ -7,7 +7,7 @@
 </style>
 {% block content %}
 <div class="row">
-    <form action="{% url 'callssearch' %}" method="GET">
+    <form action="{% url 'mycallssearch' %}" method="GET">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
@@ -15,7 +15,7 @@
                     <select name="statusCall" id="statusCall" class="form-control">
                         <option value="0">Select...</option>
                         {% for stat in status %}
-                        <option value="{{stat.id}}" {% if stat.id == call.statusCall %} selected {%endif%}>
+                        <option value="{{stat.id}}" {% if stat.id == mycall.statusCall %} selected {%endif%}>
                             {{stat.statusName}}
                         </option>
                         {% endfor %}
@@ -29,7 +29,7 @@
                     <select name="priorityCall" id="priorityCall" class="form-control">
                         <option value="0">Select...</option>
                         {% for prior in priorities %}
-                        <option value="{{prior.id}}" {% if prior.id == call.priorityCall %} selected {%endif%}>
+                        <option value="{{prior.id}}" {% if prior.id == mycall.priorityCall %} selected {%endif%}>
                             {{prior.priorityName}}</option>
                         {% endfor %}
                     </select>
@@ -42,7 +42,7 @@
                     <select name="categoryCall" id="categoryCall" class="form-control">
                         <option value="0">Select...</option>
                         {% for cat in categories %}
-                        <option value="{{cat.id}}" {% if cat.id == call.categoryCall %} selected {%endif%}>
+                        <option value="{{cat.id}}" {% if cat.id == mycall.categoryCall %} selected {%endif%}>
                             {{cat.categoryName}}
                         </option>
                         {% endfor %}
@@ -68,7 +68,7 @@
                 <div class="card-header border-primary">Subject: <strong> {{mycall.subjectCall}}</strong></div>
                 <div class="card-header border-primary">Company: <strong> {{mycall.companyCall}}</strong></div>
                 <div class="card-body">
-                    <h6 class="card-title">Client: {{call.clientCall}}</h6>
+                    <h6 class="card-title">Client: {{mycall.clientCall}}</h6>
                     <p class="card-text">{{mycall.descriptionCall|slice:"0:200"}}...</p>
                 </div>
                 <div class="card-footer border-primary">
