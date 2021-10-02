@@ -13,9 +13,7 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url="login")
 def home_view(request, *args, **kwargs):
 
-    try:
-        print(User.objects.all())
-        
+    try:        
 
         context = {
             "categories": Category.objects.all(),
@@ -24,7 +22,7 @@ def home_view(request, *args, **kwargs):
         }
 
         if request.method == 'POST':
-            nerd = Nerd.objects.get(id=request.POST['nerd'])    
+
 
             Calls = Call()
             Calls.clientCall = request.POST['client']
@@ -36,7 +34,9 @@ def home_view(request, *args, **kwargs):
             Calls.priorityCall = request.POST['priority']
             Calls.subjectCall = request.POST['subject']
             Calls.statusCall = 1  # open status
-            Calls.nerdCall = nerd.nerdName
+            if request.POST['nerd']:
+                nerd = Nerd.objects.get(id=request.POST['nerd'])    
+                Calls.nerdCall = nerd.nerdLogin
 
             if not Calls.clientCall:
                 raise forms.ValidationError("This field is required")
@@ -77,7 +77,7 @@ def login_view(request, *args, **kwargs):
             passtyped = request.POST['pass']
 
             user = authenticate(username=nerdUser.username, password=passtyped)
-            print(user)
+  
             if user is not None:
                 if user.is_active:
                     login(request, user)
