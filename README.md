@@ -16,6 +16,8 @@ $ cd /nerdhelper/src
 $ python3 manage.py runserver
 ```
 
+Don't forget to config your .env file
+
 ## Preview
 ![image](https://user-images.githubusercontent.com/64340912/135770785-928686fd-d272-46b7-b859-6e0f0aa93067.png)
 
