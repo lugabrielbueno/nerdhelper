@@ -11,10 +11,11 @@
     }
 
 </style>
+{% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style=" border-bottom: solid 4px rgb(22, 0, 121);">
     <div class="collapse navbar-collapse">
         <a class="navbar-brand" href="" style="margin-right: 25%;">
-            <img src="/static/image" alt="" width="30" height="24">
+            <img src="{% static 'imgs/nerdlogo.png' %}" alt="" width="100" height="40">
         </a>
         <div class="container-fluid">
             <ul class="navbar-nav">
