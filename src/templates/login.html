@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="The Nerd Helper" />
+    <title>Nerd Helper</title>
+
+    <style>
+        #login-credentials,
+        #forgot-credentials {
+            margin: 1% 35%;
+        }
+
+        .container {
+            padding: 2% 14%;
+            border-bottom: 1px solid rgb(22, 0, 121);
+            border-left: 1px solid rgb(22, 0, 121);
+            border-right: 1px solid rgb(22, 0, 121);
+            border-radius: 10px;
+        }
+
+        .page-title {
+            margin: 1% 35%;
+            color: rgb(68, 68, 68);
+        }
+
+        .required {
+            color: rgb(209, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
+    <script src={% static "js/forgot.js" %}></script>
+    <div class="container bg-light">
+        {% block content %}
+        <div class="row">
+            <div class="messages">
+                {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="alert alert-success" role="alert"> {{ message }} </div>
+                {% else %}
+                <div class="alert alert-danger" role="alert"> {{ message }} </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <h2 class="page-title">Nerd Helper</h2>
+
+            <form id="login-credentials" action="{% url 'login' %}" method="POST" class="row g-4 "> {% csrf_token %}
+
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label"><i class="fa fa-user"></i> Username <span
+                                    class="required">*</span>
+                                <input type="text" required class="form-control" name="username" id="username"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label"><i class="fa fa-lock"></i> Password <span
+                                    class="required">*</span>
+                                <input type="password" required class="form-control" autocomplete="off" name="pass"
+                                    id="pass"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <br> <button class="btn btn-success"><i class="fa fa-sign-in-alt"></i> Login</button>
+                        <!-- <a onclick="showForgotCred(this.id)" id="forgot" class="btn btn-secondary">Forgot
+                            credentials</a> -->
+                            <a href="{% url 'createuser' %}" class="btn btn-primary">New User</a>
+                    </div>
+                </div>
+            </form>
+
+
+            <!-- <form action="" id="forgot-credentials" class="login-form" style="display: none;" class="row g-4 ">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label"><i class="fa fa-envelope-square"></i> Email <span
+                                    class="required">*</span>
+                                <input type="text" required class="form-control" autocomplete="off" name="email"
+                                    id="email"></label>
+                            <p>Send to recover your credentials</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <br> <a onclick="showForgotCred(this.id)" id="login" class="btn btn-secondary"><i
+                                    class="fa fa-arrow-left"></i> Back</a>
+                            <button class="btn btn-success"><i class="fa fa-sign-in-alt"></i> Send</button>
+                        </div>
+                    </div>
+                </div>
+            </form> -->
+
+        </div>
+        {% endblock content %}
+    </div>
+</body>
+
+</html>

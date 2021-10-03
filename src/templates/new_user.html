@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="The Nerd Helper" />
+    <title>Nerd Helper</title>
+
+    <style>
+        #signin {
+            margin: 1% 25%;
+        }
+
+        .container {
+            padding: 2% 14%;
+            border-bottom: 1px solid rgb(22, 0, 121);
+            border-left: 1px solid rgb(22, 0, 121);
+            border-right: 1px solid rgb(22, 0, 121);
+            border-radius: 10px;
+        }
+
+        .page-title {
+            margin: 1% 35%;
+            color: rgb(68, 68, 68);
+        }
+
+        .required {
+            color: rgb(209, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
+    <script src={% static "js/forgot.js" %}></script>
+
+
+    <h2 class="page-title">Nerd Helper</h2>
+
+    <form id="signin" action="" method="POST" class="row g-4 "> {% csrf_token %}
+        <div class="row">
+            <div class="messages">
+                {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="alert alert-success" role="alert"> {{ message }} </div>
+                {% else %}
+                <div class="alert alert-danger" role="alert"> {{ message }} </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label"> Name <span class="required">*</span></label>
+                        <input type="text" required class="form-control" autocomplete="off" name="name"
+                            id="name">
+                </div>
+            </div>
+
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label"><i class="fa fa-user"></i> Username <span class="required">*</span></label>
+                        <input type="text" required class="form-control" autocomplete="off" name="username"
+                            id="username">
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label"><i class="fa fa-lock"></i> Password <span class="required">*</span></label>
+                        <input type="password" required class="form-control" autocomplete="off" name="pass"
+                            id="pass">
+                </div>
+            </div>
+
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label"><i class="fa fa-lock"></i> Confirm <span class="required">*</span></label>
+                        <input type="password" required class="form-control" autocomplete="off" name="confirmPass"
+                            id="pass">
+                </div>
+            </div>
+
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label"> Email <span class="required">*</span></label>
+                        <input type="email" required class="form-control" autocomplete="off" name="email"
+                            id="email">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <br> <button class="btn btn-success"><i class="fa fa-sign-in-alt"></i> Confirm</button>
+
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+
+</body>
+
+</html>

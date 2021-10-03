@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+<style>
+    .card-text {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+</style>
+{% block content %}
+<div class="row">
+    <form action="{% url 'mycallssearch' %}" method="GET">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Status</label>
+                        <select name="statusCall" id="statusCall" class="form-control">
+                            <option value=""></option>
+                            {% for stat in status %}
+                            <option value="{{stat.id}}">
+                                {{stat.statusName}}
+                            </option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Priority</label>
+                        <select name="priorityCall" id="priorityCall" class="form-control">
+                            <option value=""></option>
+                            {% for prior in priorities %}
+                            <option value="{{prior.id}}">
+                                {{prior.priorityName}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Category</label>
+                        <select name="categoryCall" id="categoryCall" class="form-control">
+                            <option value=""></option>
+                            {% for cat in categories %}
+                            <option value="{{cat.id}}">
+                                {{cat.categoryName}}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <button type="submit" id="search" class="btn btn-primary"><i class="fa fa-search">Search</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row">
+    {% for mycall in mycalls %}
+    <div class="col-md-4">
+        <div class="form-group">
+            <div class="card bg-light border-primary mb-3" style="max-width: 450px;">
+                <div class="card-header border-primary">Subject: <strong> {{mycall.subjectCall}}</strong></div>
+                <div class="card-header border-primary">Company: <strong> {{mycall.companyCall}}</strong></div>
+                <div class="card-body">
+                    <h6 class="card-title">Client: {{mycall.clientCall}}</h6>
+                    <p class="card-text">{{mycall.descriptionCall|slice:"0:200"}}...</p>
+                </div>
+                <div class="card-footer border-primary">
+                    <a href="{% url 'mycalldetail' mycall.id  %} " class="btn btn-primary"><i
+                            class="fa fa-folder-open"></i>
+                        Open</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

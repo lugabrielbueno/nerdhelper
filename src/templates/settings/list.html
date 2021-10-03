@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    .form-group {
+        float: left;
+    }
+    .badge-secondary{
+        background-color: #50585f;
+        padding: 4px;
+        border-radius: 3px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="form-group">
+            <div class="text-center">
+                <a class="list-group-item list-group-item-action flex-column align-items-start" href="/nerds/list">
+                    <img src="{% static 'imgs/nerd.png' %}" width="250" height="250">
+
+                </a>
+                <span class="badge badge-secondary">Nerds</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="text-center">
+                <a class="list-group-item list-group-item-action flex-column align-items-start" href="/status/list">
+                    <img src="{% static 'imgs/status.jpg' %}" width="250" height="250">
+
+                </a>
+                <span class="badge badge-secondary">Status</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="text-center">
+                <a class="list-group-item list-group-item-action flex-column align-items-start" href="/priorities/list">
+                    <img src="{% static 'imgs/priority.jpg' %}" width="250" height="250">
+
+                </a>
+                <span class="badge badge-secondary">Priorities</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="text-center">
+                <a class="list-group-item list-group-item-action flex-column align-items-start" href="/categories/list">
+                    <img src="{% static 'imgs/categories.png' %}" width="250" height="250">
+                </a>
+                <span class="badge badge-secondary">Categories</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}

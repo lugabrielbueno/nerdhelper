@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="row">
+
+    <form action="{% url 'nerdsdelete' nerd.id %}" method="POST">{% csrf_token%}
+        <input type="hidden" value="{{nerd.id}}" name="nerdId">
+        <p>
+
+            Are you sure you want to delete the nerd <strong>{{nerd.nerdName}}</strong> ?
+        </p>
+
+
+        <div class="form-group">
+            <button class="btn btn-danger"><i class="fa fa-times"></i> Delete Nerd</button>
+        </div>
+
+    </form>
+</div>
+
+
+{% endblock content %}

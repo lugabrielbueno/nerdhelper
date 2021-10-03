@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-md-10">
+
+
+    <form action="" method="POST" class="row g-4 "> {% csrf_token %}
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">Priority Name</label>
+                <input type="text" class="form-control" name="priorityName" id="priorityName">
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="form-group">
+                <br> <button class="btn btn-success"><i class="fa fa-save"></i> Insert</button>
+            </div>
+        </div>
+    </form>
+
+    <div style="clear: both; margin-bottom: 30px;">
+
+    </div>
+
+
+    <table class="table table-hover ">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for priority in priorities %}
+            <tr>
+                <th scope="row">{{priority.id}}</th>
+                <td><input type="text" class="form-control" name="priorityName" value="{{priority.priorityName}}"></td>
+                <td><button class="btn" type="submit"><i class="fa fa-save"></i></a></td>
+                <td><a class="btn " href="/priorities/delete"><i class="fa fa-times"></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

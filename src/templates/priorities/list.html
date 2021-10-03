@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-md-10">
+
+
+    <form  action="/priorities/create" method="POST" class="row g-4 "> {% csrf_token %}
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div {% if message.tags %} class="alert alert-success" {% endif %} role="alert"> {{ message }} </div>
+            {% endfor %}
+        </div>
+
+        {% endif %}
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">Priority Name <span class="required">*</span></label>
+                <input type="text" required class="form-control" name="priorityName" id="priorityName">
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <br> <button class="btn btn-success"><i class="fa fa-save"></i> Insert</button>
+            </div>
+        </div>
+    </form>
+
+    <div style="clear: both; margin-bottom: 30px;">
+
+    </div>
+
+
+    <table class="table table-hover ">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for priority in priorities %}
+            <tr>
+                <form action="{% url 'prioritiesupdate' priority.id %}" method="POST" class="row g-4 "> {% csrf_token %}
+                    <th scope="row">{{priority.id}}</th>
+                    <input type="hidden" class="form-control" name="priorityId" value="{{priority.id}}">
+                    <td><input type="text" class="form-control" name="priorityName" value="{{priority.priorityName}}">
+                    </td>
+                    <td><button class="btn" type="submit" name="updatepriority"><i class="fa fa-save"></i></button></td>
+                    <td><a class="btn "  href="{% url 'prioritiesdelete' id=priority.id %}"><i
+                                class="fa fa-times"></i></a></td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

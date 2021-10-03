@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="page-title">Register Calls</h1>
+<div class="row ">
+    <div class="col-md-12">
+        <form action="" method="POST" class="row g-4 "> {% csrf_token %}
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label">Client <span class="required">*</span></label>
+                    {{formCall.clientCall}}
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label">Company <span class="required">*</span></label>
+                    {{formCall.companyCall}}
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label">Subject <span class="required">*</span></label>
+                    {{formCall.subjectCall}}
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label">Category <span class="required">*</span></label>
+                    {{formCall.categoryCall}}
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label">Priority</label>
+                    {{formCall.priorityCall}}
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label">Email</label>
+                    {{formCall.emailResponseCall}}
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label">Description <span class="required">*</span></label>
+                    {{formCall.descriptionCall}}
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label">Solution</label>
+                    {{formCall.solutionCall}}
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <button class="btn btn-success"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+{% endblock content %}
