@@ -1,5 +1,5 @@
 # Hello, Nerd!
-If you work with tech support you probably already had problems managing your customers' tickets and tickets. There are days where there are so many that you can barely manage them. Based on this daily struggle of managing tickets, the **NerdHelper** emerged. It will help you to handle and store your customers' tickets and tickets for you.
+If you work with tech support you probably already had problems managing your customers' tickets and calls. There are days where there are so many that you can barely manage them. Based on this daily struggle of managing tickets, the **NerdHelper** emerged. It will help you to handle and store your customers' tickets and tickets for you.
 
 # Requirements
 
